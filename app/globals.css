@@ -93,3 +93,49 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Nimbus animation utilities */
+@layer utilities {
+  @keyframes nimbus-fade-up {
+    from { opacity: 0; transform: translateY(12px) scale(0.995); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes nimbus-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes nimbus-float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .animate-fade-up {
+    animation: nimbus-fade-up 700ms cubic-bezier(.2,.9,.2,1) both;
+    will-change: transform, opacity;
+  }
+
+  .animate-fade-in {
+    animation: nimbus-fade 650ms ease both;
+  }
+
+  .animate-float-slow {
+    animation: nimbus-float 4.5s ease-in-out infinite;
+  }
+
+  .nimbus-card-hover {
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
+  }
+
+  .glass-glow {
+    box-shadow: 0 6px 28px rgba(80,60,200,0.06), inset 0 1px 0 rgba(255,255,255,0.02);
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+
+  /* respects prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up, .animate-fade-in, .animate-float-slow { animation: none !important; }
+  }
+}

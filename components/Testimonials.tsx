@@ -1,3 +1,5 @@
+import Reveal from "./ui/reveal"
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -23,39 +25,34 @@ export default function Testimonials() {
   return (
     <section className="py-20 px-4 bg-card">
       <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">What Users Say</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Join thousands of satisfied users who trust Nimbus for their weather intelligence.
-          </p>
-        </div>
+        <Reveal stagger>
+          {/* Section header */}
+          <div className="text-center mb-16" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">What Users Say</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+              Join thousands of satisfied users who trust Nimbus for their weather intelligence.
+            </p>
+          </div>
 
-        {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="p-8 rounded-lg bg-background border border-border hover:border-primary/50 transition-colors"
-            >
-              {/* User info */}
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src={testimonial.image || "/placeholder.svg"}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full"
-                />
-                <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+          {/* Testimonials grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} data-reveal className="p-8 rounded-lg bg-background border border-border hover:border-primary/50 transition-colors nimbus-card-hover">
+                {/* User info */}
+                <div className="flex items-center gap-4 mb-6">
+                  <img src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} className="w-12 h-12 rounded-full animate-float-slow" />
+                  <div>
+                    <h3 className="font-semibold">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Review text */}
-              <p className="text-muted-foreground leading-relaxed italic">"{testimonial.text}"</p>
-            </div>
-          ))}
-        </div>
+                {/* Review text */}
+                <p className="text-muted-foreground leading-relaxed italic">"{testimonial.text}"</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )

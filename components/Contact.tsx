@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Reveal from "./ui/reveal"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,16 +35,17 @@ export default function Contact() {
   return (
     <section className="py-20 px-4 bg-background">
       <div className="max-w-2xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground text-pretty">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-          </p>
-        </div>
+        <Reveal stagger>
+          {/* Section header */}
+          <div className="text-center mb-12" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Get in Touch</h2>
+            <p className="text-lg text-muted-foreground text-pretty">
+              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            </p>
+          </div>
 
-        {/* Contact form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Contact form */}
+          <form onSubmit={handleSubmit} data-reveal className="space-y-6 glass-glow p-8 rounded-lg">
           {/* Name field */}
           <div>
             <label htmlFor="name" className="block text-sm font-semibold mb-2">
@@ -56,7 +58,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors nimbus-card-hover"
               placeholder="Your name"
             />
           </div>
@@ -73,7 +75,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors nimbus-card-hover"
               placeholder="your@email.com"
             />
           </div>
@@ -90,19 +92,17 @@ export default function Contact() {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none nimbus-card-hover"
               placeholder="Tell us what you think..."
             />
           </div>
 
           {/* Submit button */}
-          <button
-            type="submit"
-            className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-          >
+          <button type="submit" className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors">
             {submitted ? "Message Sent! ✓" : "Send Message"}
           </button>
         </form>
+        </Reveal>
       </div>
     </section>
   )

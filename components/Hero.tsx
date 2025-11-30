@@ -1,13 +1,30 @@
+import GradientBlinds from './GradientBlinds';
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-background">
       {/* Background gradient effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0">
+  <div className="relative w-full h-full">
+  <GradientBlinds
+          gradientColors={['#FF9FFC', '#5227FF']}
+          angle={-135}
+          noise={0.3}
+          blindCount={18}
+          blindMinWidth={10}
+          spotlightRadius={0.5}
+          spotlightSoftness={1}
+          spotlightOpacity={1}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+
+          className={undefined} dpr={undefined}  />
+</div>
+
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+      <div className="relative z-10 max-w-3xl mx-auto text-center pointer-events-none">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border mb-8">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -29,25 +46,7 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* Weather illustration placeholder */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-2xl h-64 opacity-20">
-        <svg viewBox="0 0 400 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="80" r="40" fill="currentColor" className="text-primary/30" />
-          <path
-            d="M 150 100 Q 170 90 190 100 Q 200 105 190 115 Q 170 125 150 115 Q 140 110 150 100"
-            fill="currentColor"
-            className="text-secondary/20"
-          />
-          <circle cx="300" cy="60" r="25" fill="currentColor" className="text-primary/40" />
-          <path
-            d="M 280 120 L 290 140 L 300 120 L 310 140 L 320 120"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="text-secondary/30"
-            fill="none"
-          />
-        </svg>
-      </div>
+
     </section>
   )
 }

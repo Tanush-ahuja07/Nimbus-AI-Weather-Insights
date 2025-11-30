@@ -1,4 +1,5 @@
 import { Cloud, TrendingUp, MapPin } from "lucide-react"
+import Reveal from "./ui/reveal"
 
 export default function Features() {
   const features = [
@@ -24,35 +25,38 @@ export default function Features() {
   return (
     <section className="py-20 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Powerful Features</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Everything you need to stay informed and prepared with advanced AI weather intelligence.
-          </p>
-        </div>
+        <Reveal stagger>
+          {/* Section header */}
+          <div className="text-center mb-16" data-reveal>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Powerful Features</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+              Everything you need to stay informed and prepared with advanced AI weather intelligence.
+            </p>
+          </div>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <div
-                key={index}
-                className="p-8 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors group"
-              >
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-6 h-6 text-primary" />
+          {/* Features grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <div
+                  key={index}
+                  data-reveal
+                  className="p-8 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors group nimbus-card-hover glass-glow"
+                >
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-              </div>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
